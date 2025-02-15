@@ -62,7 +62,7 @@
   
   <!-- Art container with dynamic image -->
   <div class="art-container">
-    <img id="retroArt" src="slop.png" alt="Retro Art" />
+    <img id="retroArt" src="img/0.png" alt="Retro Art" />
   </div>
   
   <!-- Audio player for Nintendo-like chiptune music -->
@@ -84,23 +84,25 @@
   
   <!-- JavaScript to cycle through retro art images -->
   <script>
-    // Array of retro art image URLs (replace with your own images)
-    const artImages = [
-      "slop.png",
-      "etgor.png",
-      "me.png",
-      "bella.png",
-      "sam.png",
-      "ustech.png"
-    ];
+    const imageExists = async (imgIdx) => {
+      var image = new Image();
+      var url = `img/${imgIdx}.png`;
+      image.src = url;
+      await new Promise(r => setTimeout(r, 500));
+      return image.width > 0;
+    }
     
     let currentIndex = 0;
     const artElement = document.getElementById('retroArt');
     
     // Change image every 10 seconds (matches the CSS animation duration)
-    setInterval(() => {
-      currentIndex = (currentIndex + 1) % artImages.length;
-      artElement.src = artImages[currentIndex];
+    setInterval(async () => {
+      currentIndex += 1;
+      const doesImageExist = await imageExists(currentIndex);
+      if (!doesImageExist) {
+        currentIndex = 0;
+      }
+      artElement.src = `img/${currentIndex}.png`;
     }, 10000);
   </script>
   
