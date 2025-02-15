@@ -1,0 +1,5 @@
+﻿{
+  "Description": "Domain ownership verification file for Microsoft 365 - place in the website root",
+  "Domain": "lambdaresearch.org",
+  "Id": "482797f5-6cfe-4639-92da-528051353a95"
+}
