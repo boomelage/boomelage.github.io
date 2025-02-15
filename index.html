@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Retro Art Metamorphosis</title>
+  <!-- Retro pixel font from Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <style>
+    /* Base retro styling */
+    body {
+      background: #000;
+      color: #0f0;
+      font-family: 'Press Start 2P', cursive;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    
+    h1 {
+      font-size: 2em;
+      margin: 20px 0;
+    }
+    
+    /* Art container styling */
+    .art-container {
+      position: relative;
+      margin: 20px auto;
+      width: 300px;
+      height: 300px;
+      border: 3px solid #0f0;
+      overflow: hidden;
+    }
+    
+    .art-container img {
+      width: 100%;
+      height: auto;
+      animation: metamorphose 10s infinite alternate;
+    }
+    
+    @keyframes metamorphose {
+      0%   { filter: hue-rotate(0deg) brightness(1); transform: scale(1); }
+      50%  { filter: hue-rotate(180deg) brightness(1.2); transform: scale(1.1); }
+      100% { filter: hue-rotate(360deg) brightness(1); transform: scale(1); }
+    }
+    
+    /* Audio player styling */
+    .audio-player {
+      margin: 20px auto;
+    }
+    
+    /* Twitter widget container */
+    .twitter-widget {
+      margin: 20px auto;
+      width: 90%;
+      max-width: 500px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Retro Art Metamorphosis</h1>
+  
+  <!-- Art container with dynamic image -->
+  <div class="art-container">
+    <img id="retroArt" src="https://via.placeholder.com/300x300.png?text=Retro+Art+1" alt="Retro Art" />
+  </div>
+  
+  <!-- Audio player for Nintendo-like chiptune music -->
+  <div class="audio-player">
+    <audio controls loop>
+      <!-- Replace the src URL with your Nintendo-style music file -->
+      <source src="path/to/nintendo-style-music.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+  
+  <!-- Embedded Twitter timeline for inpsyopable -->
+  <div class="twitter-widget">
+    <a class="twitter-timeline" 
+       data-height="400" 
+       href="https://twitter.com/inpsyopable?ref_src=twsrc%5Etfw">
+       Tweets by inpsyopable
+    </a>
+  </div>
+  
+  <!-- JavaScript to cycle through retro art images -->
+  <script>
+    // Array of retro art image URLs (replace with your own images)
+    const artImages = [
+      "https://via.placeholder.com/300x300.png?text=Retro+Art+1",
+      "https://via.placeholder.com/300x300.png?text=Retro+Art+2",
+      "https://via.placeholder.com/300x300.png?text=Retro+Art+3"
+    ];
+    
+    let currentIndex = 0;
+    const artElement = document.getElementById('retroArt');
+    
+    // Change image every 10 seconds (matches the CSS animation duration)
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % artImages.length;
+      artElement.src = artImages[currentIndex];
+    }, 10000);
+  </script>
+  
+  <!-- Twitter widget script -->
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</body>
+</html>
