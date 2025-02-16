@@ -44,17 +44,6 @@
       100% { filter: hue-rotate(360deg) brightness(1); transform: scale(1); }
     }
     
-    /* Audio player styling */
-    .audio-player {
-      margin: 20px auto;
-    }
-    
-    /* Twitter widget container */
-    .twitter-widget {
-      margin: 20px auto;
-      width: 90%;
-      max-width: 500px;
-    }
   </style>
 </head>
 <body>
@@ -65,20 +54,30 @@
     <img id="retroArt" src="img/0.png" alt="Retro Art" />
   </div>
   
-  <!-- Audio player for Nintendo-like chiptune music -->
-  <!-- <div class="audio-player">
-    <audio controls loop>
-      <!-- Replace the src URL with your Nintendo-style music file -->
-      <source src="path/to/nintendo-style-music.mp3" type="audio/mpeg" />
-    </audio>
-  </div>
-  
-  <!-- Embedded Twitter timeline for inpsyopable -->
-  <div class="twitter-widget">
-    <a class="twitter-timeline" 
+  <!-- Embedded Twitter link for inpsyopable -->
+  <div class="twitter-linki">
+    <a class="twitter-link" 
        data-height="400" 
        href="https://twitter.com/inpsyopable">
-       Tweets by inpsyopable
+       tweets by inpsyopable
+    </a>
+  </div>
+
+  <p style="margin-bottom:1em;"></p>
+
+  <div class="ig-link">
+    <a class="ig-link" 
+       href="https://www.instagram.com/vault.gamma/">
+       snapshots by vault gamma
+    </a>
+  </div>
+
+  <p style="margin-bottom:1em;"></p>
+  
+  <div class="coffee-link">
+    <a class="coffee-link" 
+       href="https://buymeacoffee.com/ndvgphpyqj">
+       buy him a coffee!
     </a>
   </div>
   
@@ -105,8 +104,5 @@
       artElement.src = `img/${currentIndex}.png`;
     }, 10000);
   </script>
-  
-  <!-- Twitter widget script -->
-  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"> </script>
 </body>
 </html>
