@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TI-84 Emulator</title>
+    <style>
+        body {
+            background-color: black;
+            color: green;
+            font-family: monospace;
+            text-align: center;
+        }
+        #calculator {
+            display: inline-block;
+            border: 2px solid green;
+            padding: 20px;
+            margin-top: 50px;
+            background-color: black;
+        }
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 50px);
+            gap: 5px;
+            margin-top: 10px;
+        }
+        button {
+            background-color: green;
+            color: black;
+            font-size: 16px;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: darkgreen;
+        }
+        #display {
+            width: 100%;
+            height: 40px;
+            font-size: 20px;
+            text-align: right;
+            background-color: black;
+            color: green;
+            border: 1px solid green;
+        }
+    </style>
+</head>
+<body>
+    <h1>TI-84 Emulator</h1>
+    <div id="calculator">
+        <input type="text" id="display" disabled>
+        <div class="button-grid">
+            <button onclick="clearDisplay()">C</button>
+            <button onclick="appendCharacter('(')">(</button>
+            <button onclick="appendCharacter(')')">)</button>
+            <button onclick="appendCharacter('/')">/</button>
+            <button onclick="appendCharacter('7')">7</button>
+            <button onclick="appendCharacter('8')">8</button>
+            <button onclick="appendCharacter('9')">9</button>
+            <button onclick="appendCharacter('*')">*</button>
+            <button onclick="appendCharacter('4')">4</button>
+            <button onclick="appendCharacter('5')">5</button>
+            <button onclick="appendCharacter('6')">6</button>
+            <button onclick="appendCharacter('-')">-</button>
+            <button onclick="appendCharacter('1')">1</button>
+            <button onclick="appendCharacter('2')">2</button>
+            <button onclick="appendCharacter('3')">3</button>
+            <button onclick="appendCharacter('+')">+</button>
+            <button onclick="appendCharacter('0')">0</button>
+            <button onclick="appendCharacter('.')">.</button>
+            <button onclick="calculateResult()">=</button>
+            <button onclick="appendCharacter('^')">^</button>
+        </div>
+    </div>
+    <script>
+        // JavaScript code for the emulator
+        class TI84Emulator {
+            constructor() {
+                this.display = "";
+                this.memory = {};
+            }
+
+            pressKey(key) {
+                if (key === "ENTER") {
+                    this.evaluateExpression();
+                } else if (key === "CLEAR") {
+                    this.clearDisplay();
+                } else {
+                    this.display += key;
+                }
+            }
+
+            evaluateExpression() {
+                try {
+                    this.display = eval(this.display); // Simple evaluation (needs security measures)
+                } catch (error) {
+                    this.display = "Error";
+                }
+            }
+
+            clearDisplay() {
+                this.display = "";
+            }
+
+            getDisplay() {
+                return this.display;
+            }
+        }
+
+        // Initialize the calculator
+        const calculator = new TI84Emulator();
+
+        // Function to append character to the display
+        function appendCharacter(char) {
+            calculator.pressKey(char);
+            updateDisplay();
+        }
+
+        // Function to clear the display
+        function clearDisplay() {
+            calculator.pressKey("CLEAR");
+            updateDisplay();
+        }
+
+        // Function to calculate the result
+        function calculateResult() {
+            calculator.pressKey("ENTER");
+            updateDisplay();
+        }
+
+        // Function to update the display
+        function updateDisplay() {
+            document.getElementById('display').value = calculator.getDisplay();
+        }
+    </script>
+</body>
+</html>
